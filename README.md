@@ -1,56 +1,108 @@
-# Terraform-aws-lightsail
-# Terraform AWS Cloud Lightsail Module
+<<p align="center"> <img src="https://user-images.githubusercontent.com/50652676/62349836-882fef80-b51e-11e9-99e3-7b974309c7e3.png" width="100" height="100"></p>
 
-## Table of Contents
+
+<h1 align="center">
+    Terraform AWS  Lightsail
+</h1>
+
+
+<p align="center">
+
+<a href="https://www.terraform.io">
+  <img src="https://img.shields.io/badge/Terraform-v1.7.0-green" alt="Terraform">
+</a>
+<a href="https://github.com/slovink/terraform-aws-lightsail/blob/master/LICENSE">
+  <img src="https://img.shields.io/badge/License-APACHE-blue.svg" alt="Licence">
+</a>
+
+
+
+</p>
+<p align="center">
+
+<a href='https://www.facebook.com/Slovink.in=https://github.com/slovink/terraform-aws-lightsail'>
+  <img title="Share on Facebook" src="https://user-images.githubusercontent.com/50652676/62817743-4f64cb80-bb59-11e9-90c7-b057252ded50.png" />
+</a>
+<a href='https://www.linkedin.com/company/101534993/admin/feed/posts/=https://github.com/slovink/terraform-aws-lightsail '>
+  <img title="Share on LinkedIn" src="https://user-images.githubusercontent.com/50652676/62817742-4e339e80-bb59-11e9-87b9-a1f68cae1049.png" />
+</a>
+
+
+
 - [Introduction](#introduction)
 - [Usage](#usage)
-- [Example](#example)
+- [Module Inputs](#module-inputs)
+- [Module Outputs](#module-outputs)
+- [Examples](#examples)
 - [License](#license)
-- [Author](#Author)
-- [Inputs](#inputs)
-- [Outputs](#outputs)
+
+
+
+## Prerequisites
+
+This module has a few dependencies:
+
+- [Terraform 1.x.x](https://learn.hashicorp.com/terraform/getting-started/install.html)
+- [Go](https://golang.org/doc/install)
+
+
 
 ## Introduction
-This Terraform module creates an AWS lightsail along with additional configuration options.
-## Usage
-To use this module, you should have Terraform installed and configured for AWS. This module provides the necessary Terraform configuration for creating AWS resources, and you can customize the inputs as needed. Below is an example of how to use this module:
-# Example
+This Terraform module creates an AWS Lightsail along with additional configuration options.
 
-```hcl
-module "lightsail" {
-  source      = "../"
-  environment = "test"
-  name        = "lightsail"
-  label_order = ["name", "environment"]
 
-  public_key           = "sshJXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXbnzTZTAZjA6mtjK/BTcoU0ElzHYU= satish@satish"
-  use_default_key_pair = true
-  user_data            = file("${path.module}/lightsail.sh")
 
-  port_info = [
-    {
-      port     = 80
-      protocol = "tcp"
-      cidrs    = ["0.0.0.0/0"]
-    },
-    {
-      port     = 22
-      protocol = "tcp"
-      cidrs    = ["0.0.0.0/0"]
-    }
-  ]
-}
-```
-
-## Example
-You can find more usage examples and configurations in the [examples](git@github.com:slovink/terraform-aws-lightsail/tree/master/example) source code of each module, which are available
-
-## License
-This Terraform module is provided under the **MIT** License. Please see the [LICENSE](git@github.com:slovink/terraform-aws-lightsail/blob/master/LICENSE) file for more details.
+## Examples
+For detailed examples on how to use this module, please refer to the [Examples](https://github.com/slovink/terraform-aws-lightsail/tree/master/example) directory within this repository.
 
 ## Author
-Your Name
-Replace **MIT** and **slovink** with the appropriate license and your information. Feel free to expand this README with additional details or usage instructions as needed for your specific use case.
+Your Name Replace **MIT** and **slovink** with the appropriate license and your information. Feel free to expand this README with additional details or usage instructions as needed for your specific use case.
+
+## License
+This project is licensed under the **MIT** License - see the [LICENSE](https://github.com/slovink/terraform-aws-lightsail/blob/master/LICENSE) file for details.
+
+## Feedback
+If you come accross a bug or have any feedback, please log it in our [issue tracker](https://github.com/slovink/terraform-aws-lightsail/issues), or feel free to drop us an email at [concat@slovink.com](concat@slovink.com).
+
+If you have found it worth your time, go ahead and give us a ★ on [our GitHub](https://github.com/slovink/terraform-aws-lightsail)!
+
+
+## About us
+
+At [slovink][https://slovink.com/], we offer expert guidance, implementation support and services to help organisations accelerate their journey to the cloud. Our services include docker and container orchestration, cloud migration and adoption, infrastructure automation, application modernisation and remediation, and performance engineering.
+
+<p align="center">We are <b> The Cloud Experts!</b></p>
+<hr />
+<p align="center">We ❤️  <a href="https://github.com/slovink">Open Source</a> and you can check out <a href="https://github.com/slovink">our other modules</a> to get help with your new Cloud ideas.</p>
+
+
+# Example
+
+  ```hcl
+    module "lightsail" {
+      source      = ".https://github.com/slovink/terraform-aws-lightsail.git?ref=v1.0.0"
+      environment = "test"
+      name        = "lightsail"
+      label_order = ["name", "environment"]
+
+      public_key           = "sshJXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXbnzTZTAZjA6mtjK/BTcoU0ElzHYU= satish@satish"
+      use_default_key_pair = true
+      user_data            = file("${path.module}/lightsail.sh")
+
+      port_info = [
+        {
+          port     = 80
+          protocol = "tcp"
+          cidrs    = ["0.0.0.0/0"]
+        },
+        {
+          port     = 22
+          protocol = "tcp"
+          cidrs    = ["0.0.0.0/0"]
+        }
+      ]
+    }
+  ```
 
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
@@ -70,7 +122,7 @@ Replace **MIT** and **slovink** with the appropriate license and your informatio
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_labels"></a> [labels](#module\_labels) | git@github.com:slovink/terraform-aws-labels.git | 1.0.0 |
+| <a name="module_labels"></a> [labels](#module\_labels) | git@github.com:slovink/terraform-aws-labels.git | v1.0.0 |
 
 ## Resources
 
